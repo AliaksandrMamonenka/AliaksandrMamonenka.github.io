@@ -1,4 +1,3 @@
-import './style.less';
 import { person } from './person';
 
 

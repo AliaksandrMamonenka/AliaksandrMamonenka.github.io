@@ -1,6 +1,5 @@
-const NODE_ENV = process.env.NODE_ENV || 'development';
-const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
+var NODE_ENV = process.env.NODE_ENV || 'development';
+var webpack = require('webpack');
 
 module.exports = {
   context: __dirname + '/sources',
@@ -29,15 +28,6 @@ module.exports = {
       {
         test: /\.ts$/,
         loader: 'ts-loader'
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader"
-      },
-      {
-        test: /\.less$/,
-        loader: "style-loader!css-loader!less-loader"
       }
     ]
   }
