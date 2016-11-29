@@ -5,7 +5,11 @@
   "main": "index.js",
   "dependencies": {},
   "devDependencies": {
+    "@types/core-js": "^0.9.34",
+    "@types/google-maps": "^3.1.28",
+    "@types/whatwg-fetch": "0.0.32",
     "ts-loader": "^1.2.2",
+    "tslint-loader": "^3.2.0",
     "typescript": "^2.0.10",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
