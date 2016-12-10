@@ -1,24 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {config} from '../../config/app.config';
 
-interface List {
-  name: string;
-  main: {
-    temp: string;
-    pressure: string;
-    humidity: string;
-  }
-}
-
-interface WeatherData {
-  list: List[];
-}
-
-interface Position {
-  coords: {
-    latitude: number;
-    longitude: number;
-  }
-}
+import {List} from './list.interface';
+import {WeatherData} from './weather.interface';
 
 @Component({
   selector: 'weather-component',
@@ -26,34 +10,52 @@ interface Position {
 })
 
 export class WeatherComponent implements OnInit {
-  weatherInCities: List[];
-
+  @Input() position: Position;
+  
+  cityList: List[];
+  
   getWeatherDataFromServer(lat: number, lon: number, cnt: string): void {
-    const APPID: string = 'd30f5843f04e9c5704ca3442d832670d';
-    let url: string = 'http://api.openweathermap.org/data/2.5/find?lat=' + lat + '&lon=' + lon + '&cnt=' + cnt + '&&appid=' + APPID;
-
+    const APPID: string = config.weatherId;
+    let url: string = 'http://api.openweathermap.org/data/2.5/find?lat=' + lat + '&lon=' + lon + '&cnt=' + cnt + '&appid=' + APPID;
     fetch(url).then((response) => response.json())
-        .then((json: WeatherData) => this.parseJSONintoHTML(json))
-        .catch((ex: any) => {
-          console.warn(`Something went wrong: ${ex} !!!`);
-        });
-
+      .then((json: WeatherData) => this.cityList = json.list)
+      .catch((ex: any) => {
+        console.warn(`Something went wrong: ${ex} !!!`);
+      });
   }
-
-  parseJSONintoHTML = (data: WeatherData) => {
-    this.weatherInCities = data.list;
-  };
-
-  success = (position: Position) => {
-    this.getWeatherDataFromServer(position.coords.latitude, position.coords.longitude, '50');
-  };
-
-  error(): void {
-    console.warn('ERROR: happened something bad, try again. Could you please...');
-  }
-
+  
+  //TODO: move this logic to pipe
+  // cityIdBase: any = [];
+  // cityBase: any = [];
+  // currenCity: any = null;
+  //
+  // getSingleWeatherDataFromServer(wid: number): void {
+  //   const APPID: string = config.weatherId;
+  //
+  //   let url: string = 'http://api.openweathermap.org/data/2.5/weather?id=' + wid + '&appid=' + APPID;
+  //   fetch(url).then((response) => response.json())
+  //     .then((json: any) => this.processWeatherData(json))
+  //     .catch((ex: any) => {
+  //       console.warn(`Something went wrong: ${ex} !!!`);
+  //     });
+  // }
+  // processWeatherData(data:any){
+  //   this.cityIdBase.push(data.id);
+  // }
+  //
+  // select(item: any) {
+  //   console.log(item);
+  //   // if (this.cityIdBase.length && this.cityIdBase.find(item.id)) {
+  //   //
+  //   // } else {
+  //   //   this.getSingleWeatherDataFromServer(item.id);
+  //   // }
+  // }
+  //
+  // getCity(){}
+  // setCuty(){}
+  //
   ngOnInit(): void {
-
-    navigator.geolocation.getCurrentPosition(this.success, this.error);
+    this.getWeatherDataFromServer(this.position.coords.latitude, this.position.coords.longitude, '50');
   }
 }

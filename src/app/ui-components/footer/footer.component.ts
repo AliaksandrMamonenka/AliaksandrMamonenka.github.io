@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './footer.component.html'
 })
 
-export class FooterComponent {}
+export class FooterComponent {
+  year = new Date().getTime();
+}

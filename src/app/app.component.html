@@ -1,10 +1,18 @@
 <!-- Main content -->
 <div class="container-fluid">
-  <header-component></header-component>
-  <map-component></map-component>
-  <weather-component></weather-component>
+    <header-component></header-component>
+    <p class="your-location pull-left">
+        <b>Your coordinates are: </b>
+        <span *ngIf="!position">PENDING...</span>
+        <span *ngIf="position">Latitude {{position.coords.latitude | number:'1.3-3'}}, Longitude {{position.coords.longitude | number:'1.3-3'}}</span>
+    </p>
+    <last-refresh [time]="time"></last-refresh>
 
+    <div class="modules-wrapper" *ngIf="position">
+        <map-component [position]="position"></map-component>
+        <weather-component [position]="position"></weather-component>
+    </div>
 </div>
-<!-- END Main content -->
+<!-- ./END Main content -->
 
 <footer-component></footer-component>
