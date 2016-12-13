@@ -9,8 +9,9 @@
     <last-refresh [time]="time"></last-refresh>
 
     <div class="modules-wrapper" *ngIf="position">
-        <map-component [position]="position"></map-component>
-        <weather-component [position]="position"></weather-component>
+        <single-city></single-city>
+        <!--<map-component [position]="position"></map-component>-->
+        <!--<weather-component [position]="position"></weather-component>-->
     </div>
 </div>
 <!-- ./END Main content -->

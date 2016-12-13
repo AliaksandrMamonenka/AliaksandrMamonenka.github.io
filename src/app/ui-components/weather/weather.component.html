@@ -1,7 +1,6 @@
 <div class="row">
     <div class="col-lg-12">
         <h2>Weather Table</h2>
-        <single-city *ngIf="currenCity" cityData="currenCity"></single-city>
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
@@ -15,7 +14,7 @@
                 <tbody>
                 <tr *ngFor="let item of cityList">
                     <td>
-                        <button class="btn btn-link" >{{item.name}} </button>
+                        <button class="btn btn-link">{{item.name}}</button>
                     </td>
                     <td>{{item.main.temp | celsius}} celsius</td>
                     <td>{{item.main.pressure}}</td>
@@ -32,5 +31,3 @@
         </div>
     </div>
 </div>
-
-<!--(click)="select(item)"-->

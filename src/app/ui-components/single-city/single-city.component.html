@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h4 class="page-header">Single City Weather</h4>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="form-group">
+                    <input [(ngModel)]="newVal" type="text" placeholder="Enter City Name here">
+                </div>
+                <button (click)="checkWeather()">Check</button>
+
+            </div>
+            <div class="col-lg-6">!!! {{result | CityWeather | async}}</div>
+        </div>
+    </div>
+</div>

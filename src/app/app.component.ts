@@ -8,7 +8,7 @@ import '../../public/css/styles.css';
 })
 export class AppComponent implements OnInit {
   position: Position = null;
-  time: EventEmitter<any> = new EventEmitter(null);
+  time: EventEmitter<{}> = new EventEmitter(null);
   
   ngOnInit(): void {
     navigator.geolocation.getCurrentPosition(
