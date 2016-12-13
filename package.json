@@ -1,4 +1,4 @@
-{
+  {
   "name": "angular2-webpack",
   "version": "1.0.0",
   "description": "A webpack starter for angular 2",
@@ -43,7 +43,7 @@
     "raw-loader": "^0.5.1",
     "rimraf": "^2.5.2",
     "style-loader": "^0.13.1",
-    "typescript": "^2.0.3",
+    "typescript": "2.0.10",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1",
     "webpack-merge": "^0.14.0"
