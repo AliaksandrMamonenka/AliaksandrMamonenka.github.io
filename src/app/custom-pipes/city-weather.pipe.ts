@@ -4,16 +4,24 @@ import {config} from '../config/app.config';
     name: 'CityWeather'
 })
 export class CityWeatherPipe implements PipeTransform {
-    // usedCity:any[];
+    usedCity: any[] = [];
 
     getPromiseData(name: string) {
         return new Promise(resolve => {
             const APPID: string = config.weatherId;
             let url: string = 'http://api.openweathermap.org/data/2.5/weather?q={' + name + '}&appid=' + APPID;
 
+            // Check if City was fired before use this data
+            for (let item of this.usedCity) {
+                if (item.name == name) {
+                    return resolve(item);
+                }
+            }
+
+            // If city fired first time - get data from server
             fetch(url).then((response) => response.json())
                 .then((json: any) => {
-                    // this.usedCity.push(json);
+                    this.usedCity.push(json);
                     resolve(json);
                 })
                 .catch((ex: any) => {
@@ -24,14 +32,6 @@ export class CityWeatherPipe implements PipeTransform {
 
     transform(city: string) {
         if (city) {
-
-            // не дописал сохранение погоды для повторного города
-            // for (let item of this.usedCity) {
-            //     if(item.name == city){
-            //         return item
-            //     }
-            // }
-
             return this.getPromiseData(city);
         }
     }
