@@ -1,16 +1,15 @@
 <div class="row">
     <div class="col-lg-12">
-        <h4 class="page-header">Single City Weather</h4>
-
         <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                <div class="form-group">
+            <h4 class="page-header">Single City Weather</h4>
+            <div class= "col-md-12 ">
+                <div class="well">
                     <input [(ngModel)]="newVal" type="text" placeholder="Enter City Name here">
+                    <button (click)="checkWeather()">Check</button>
+                    <h4>Result</h4>
+                    <p>{{result | CityWeather | async | getData }} </p>
                 </div>
-                <button (click)="checkWeather()">Check</button>
             </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{result | CityWeather | async | getData | json}}</div>
         </div>
     </div>
 </div>
-

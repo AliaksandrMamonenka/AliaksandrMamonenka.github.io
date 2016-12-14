@@ -19,7 +19,7 @@ export class WeatherComponent implements OnInit {
     let url: string = 'http://api.openweathermap.org/data/2.5/find?lat=' + lat + '&lon=' + lon + '&cnt=' + cnt + '&appid=' + APPID;
     fetch(url).then((response) => response.json())
       .then((json: WeatherData) => this.cityList = json.list)
-      .catch((ex: any) => {
+      .catch((ex: string) => {
         console.warn(`Something went wrong: ${ex} !!!`);
       });
   }

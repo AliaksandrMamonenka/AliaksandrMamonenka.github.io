@@ -4,9 +4,7 @@ import {Pipe, PipeTransform} from '@angular/core';
 export class GetDataPipe implements PipeTransform {
     transform(value: any, args: string[]): any {
         if (!value) return value;
-        return {
-            'City': value.name,
-            'Temp': value.main.temp
-        };
+        let result:string;
+        return `Requested city: ${value.name}, Temperature: ${value.main.temp} fahrenheit`;
     }
 }

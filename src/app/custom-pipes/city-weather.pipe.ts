@@ -4,6 +4,8 @@ import {config} from '../config/app.config';
     name: 'CityWeather'
 })
 export class CityWeatherPipe implements PipeTransform {
+    // usedCity:any[];
+
     getPromiseData(name: string) {
         return new Promise(resolve => {
             const APPID: string = config.weatherId;
@@ -11,6 +13,7 @@ export class CityWeatherPipe implements PipeTransform {
 
             fetch(url).then((response) => response.json())
                 .then((json: any) => {
+                    // this.usedCity.push(json);
                     resolve(json);
                 })
                 .catch((ex: any) => {
@@ -21,6 +24,14 @@ export class CityWeatherPipe implements PipeTransform {
 
     transform(city: string) {
         if (city) {
+
+            // не дописал сохранение погоды для повторного города
+            // for (let item of this.usedCity) {
+            //     if(item.name == city){
+            //         return item
+            //     }
+            // }
+
             return this.getPromiseData(city);
         }
     }
