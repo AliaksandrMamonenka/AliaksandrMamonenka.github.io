@@ -31,6 +31,7 @@ export class CityWeatherPipe implements PipeTransform {
     }
 
     transform(city: string) {
+
         if (city) {
             return this.getPromiseData(city);
         }

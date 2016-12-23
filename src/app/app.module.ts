@@ -40,6 +40,7 @@ import {AgmCoreModule} from 'angular2-google-maps/core';
         CityWeatherPipe,
         GetDataPipe
     ],
+    providers: [ CityWeatherPipe],
     bootstrap: [AppComponent]
 })
 export class AppModule {

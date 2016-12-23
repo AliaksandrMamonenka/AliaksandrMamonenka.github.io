@@ -17,7 +17,8 @@ var HeaderComponent = (function () {
     HeaderComponent = __decorate([
         core_1.Component({
             selector: 'header-component',
-            templateUrl: './header.component.html'
+            templateUrl: './header.component.html',
+            changeDetection: core_1.ChangeDetectionStrategy.OnPush
         }), 
         __metadata('design:paramtypes', [])
     ], HeaderComponent);

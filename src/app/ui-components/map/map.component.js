@@ -19,7 +19,8 @@ var MapComponent = (function () {
     MapComponent = __decorate([
         core_1.Component({
             selector: 'map-component',
-            templateUrl: './map.component.html'
+            templateUrl: './map.component.html',
+            changeDetection: core_1.ChangeDetectionStrategy.OnPush
         }), 
         __metadata('design:paramtypes', [])
     ], MapComponent);
