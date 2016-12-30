@@ -13,13 +13,11 @@ import {CityWeatherPipe} from "../../custom-pipes/city-weather.pipe";
 export class WeatherComponent implements OnInit {
     @Input() position: Position;
 
-    // cityList: List[];
-    cityList: any;
+    cityList: List[];
     newCity: string;
     isVisible: boolean = false;
 
-    constructor(private cityWeather: CityWeatherPipe) {
-    }
+    constructor(private cityWeather: CityWeatherPipe) {}
 
 
     getWeatherDataFromServer(lat: number, lon: number, cnt: string): void {
@@ -33,19 +31,16 @@ export class WeatherComponent implements OnInit {
     }
 
     makeFavorite(item: any): void {
-        console.log(item);
         item.favorite = !item.favorite;
     }
 
     removeItem(itemIndex: any) {
-        console.log(itemIndex);
-
         this.cityList.splice(itemIndex, 1);
     }
 
     addNewCity() {
 
-        this.cityWeather.transform(this.newCity).then((data) => {
+        this.cityWeather.transform(this.newCity).then((data: any) => {
             this.cityList.unshift(data);
             this.isVisible = false;
             this.newCity = "";
@@ -57,39 +52,6 @@ export class WeatherComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.cityList = [
-            {
-                name: 'alex',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }, {
-                name: 'alex11111',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }, {
-                name: 'alex',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }, {
-                name: 'alex',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }, {
-                name: 'alex',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }, {
-                name: 'alex',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }
-        ];
-        // this.getWeatherDataFromServer(this.position.coords.latitude, this.position.coords.longitude, '50');
+        this.getWeatherDataFromServer(this.position.coords.latitude, this.position.coords.longitude, '50');
     }
 }
