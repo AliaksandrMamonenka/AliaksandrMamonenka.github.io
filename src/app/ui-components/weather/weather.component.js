@@ -27,11 +27,13 @@ var WeatherComponent = (function () {
         });
     };
     WeatherComponent.prototype.makeFavorite = function (item) {
-        console.log(item);
+        if (this.favoriteCityDetails) {
+            this.favoriteCityDetails.favorite = false;
+        }
         item.favorite = !item.favorite;
+        this.favoriteCityDetails = item;
     };
     WeatherComponent.prototype.removeItem = function (itemIndex) {
-        console.log(itemIndex);
         this.cityList.splice(itemIndex, 1);
     };
     WeatherComponent.prototype.addNewCity = function () {
@@ -45,41 +47,11 @@ var WeatherComponent = (function () {
     WeatherComponent.prototype.addItem = function () {
         this.isVisible = !this.isVisible;
     };
+    WeatherComponent.prototype.canselAddItem = function () {
+        this.isVisible = false;
+    };
     WeatherComponent.prototype.ngOnInit = function () {
-        this.cityList = [
-            {
-                name: 'alex',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }, {
-                name: 'alex11111',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }, {
-                name: 'alex',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }, {
-                name: 'alex',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }, {
-                name: 'alex',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }, {
-                name: 'alex',
-                main: {
-                    temp: 20, pressure: 10, humidity: 32
-                }
-            }
-        ];
-        // this.getWeatherDataFromServer(this.position.coords.latitude, this.position.coords.longitude, '50');
+        this.getWeatherDataFromServer(this.position.coords.latitude, this.position.coords.longitude, '50');
     };
     __decorate([
         core_1.Input(), 

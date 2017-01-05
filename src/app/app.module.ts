@@ -12,6 +12,7 @@ import {MapComponent} from './ui-components/map/map.component';
 import {LastRefreshComponent} from './ui-components/refresh/last-refresh.component';
 import {SingleCityComponent} from './ui-components/single-city/single-city.component';
 import {RealTimeUpdateComponent} from './ui-components/real-time-update/real-time-update.component';
+import {FavoriteCityComponent} from './ui-components/favorite-city/favorite-city.component';
 
 // Custom pipes
 import {CelsiusPipe} from './custom-pipes/celsius.pipe'
@@ -38,6 +39,7 @@ import {AgmCoreModule} from 'angular2-google-maps/core';
         LastRefreshComponent,
         SingleCityComponent,
         RealTimeUpdateComponent,
+        FavoriteCityComponent,
         CelsiusPipe,
         CityWeatherPipe,
         GetDataPipe

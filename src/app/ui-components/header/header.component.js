@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var dataProvider_1 = require('../real-time-update/dataProvider');
 var HeaderComponent = (function () {
     function HeaderComponent() {
         this.weather = 'weather';
@@ -18,7 +19,7 @@ var HeaderComponent = (function () {
         core_1.Component({
             selector: 'header-component',
             templateUrl: './header.component.html',
-            changeDetection: core_1.ChangeDetectionStrategy.OnPush
+            providers: [dataProvider_1.FakeDataProvider]
         }), 
         __metadata('design:paramtypes', [])
     ], HeaderComponent);

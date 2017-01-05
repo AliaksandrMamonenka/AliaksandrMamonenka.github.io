@@ -2,6 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import {config} from '../../config/app.config';
 
 import {List} from './list.interface';
+import {ModifiedList} from './modifiedList.interface';
 import {WeatherData} from './weather.interface';
 import {CityWeatherPipe} from "../../custom-pipes/city-weather.pipe";
 
@@ -16,8 +17,10 @@ export class WeatherComponent implements OnInit {
     cityList: List[];
     newCity: string;
     isVisible: boolean = false;
+    favoriteCityDetails: ModifiedList;
 
-    constructor(private cityWeather: CityWeatherPipe) {}
+    constructor(private cityWeather: CityWeatherPipe) {
+    }
 
 
     getWeatherDataFromServer(lat: number, lon: number, cnt: string): void {
@@ -31,7 +34,12 @@ export class WeatherComponent implements OnInit {
     }
 
     makeFavorite(item: any): void {
+        if (this.favoriteCityDetails) {
+            this.favoriteCityDetails.favorite = false;
+        }
+
         item.favorite = !item.favorite;
+        this.favoriteCityDetails = item;
     }
 
     removeItem(itemIndex: any) {
@@ -39,7 +47,6 @@ export class WeatherComponent implements OnInit {
     }
 
     addNewCity() {
-
         this.cityWeather.transform(this.newCity).then((data: any) => {
             this.cityList.unshift(data);
             this.isVisible = false;
@@ -49,6 +56,10 @@ export class WeatherComponent implements OnInit {
 
     addItem() {
         this.isVisible = !this.isVisible;
+    }
+
+    canselAddItem() {
+        this.isVisible = false;
     }
 
     ngOnInit(): void {
