@@ -13,6 +13,12 @@ import {LastRefreshComponent} from './ui-components/refresh/last-refresh.compone
 import {SingleCityComponent} from './ui-components/single-city/single-city.component';
 import {RealTimeUpdateComponent} from './ui-components/real-time-update/real-time-update.component';
 import {FavoriteCityComponent} from './ui-components/favorite-city/favorite-city.component';
+import {IconWeatherComponent} from './ui-components/icon-weather/icon-weather.component';
+import {WindDataComponent} from './ui-components/wind-data/wind-data.component';
+
+// Directives
+import {TemperatureColorDirective} from './directives/temperature-color.directive'
+import {StructDirective} from './directives/structural.directive'
 
 // Custom pipes
 import {CelsiusPipe} from './custom-pipes/celsius.pipe'
@@ -40,6 +46,10 @@ import {AgmCoreModule} from 'angular2-google-maps/core';
         SingleCityComponent,
         RealTimeUpdateComponent,
         FavoriteCityComponent,
+        IconWeatherComponent,
+        WindDataComponent,
+        TemperatureColorDirective,
+        StructDirective,
         CelsiusPipe,
         CityWeatherPipe,
         GetDataPipe

@@ -1,6 +1,14 @@
 <div class="row">
     <div class="col-lg-12">
 
+        <div>
+            <h4>Structural directives</h4>
+            <p *structDir="5">An odd numbers 5</p>
+            <p *structDir="4">An even numbers 4</p>
+            <p *structDir="15">An odd numbers 15</p>
+            <p *structDir="8">An even numbers 8</p>
+        </div>
+
         <favorite-city [cityDetails]="favoriteCityDetails"></favorite-city>
 
         <div class="well" *ngIf="isVisible">
@@ -11,12 +19,15 @@
         </div>
         <h2 style="display: inline-block; margin-right: 10px">Weather Table</h2>
         <button *ngIf="!isVisible" (click)="addItem()">Add new city</button>
+
         <div class="table-responsive">
             <table class="table table-bordered table-hover">
                 <thead>
                 <tr>
                     <th>N</th>
+                    <th>Image</th>
                     <th>Name</th>
+                    <th>Wind</th>
                     <th>Temp</th>
                     <th>Pressure</th>
                     <th>Humidity</th>
@@ -28,10 +39,20 @@
                 <tr *ngFor="let item of cityList; let i = index">
                     <td>{{i + 1}}</td>
                     <td>
+                        <icon-weather [icon]="item.weather[0].icon"></icon-weather>
+                    </td>
+                    <td>
                         <button class="btn btn-link" (click)="makeFavorite(item)">{{item.name}}</button>
                         <span [ngClass]="{'heart': item.favorite}"></span>
                     </td>
-                    <td>{{item.main.temp | celsius}} celsius</td>
+                    <td>
+                        <span>{{item.wind.speed}} meter/sec</span> /
+                        <span>{{item.wind.deg}} degrees</span>
+                        <wind-data [direction]="item.wind.deg"></wind-data>
+                    </td>
+                    <td>
+                        <div [tempColor]="item.main.temp">{{item.main.temp | celsius}} celsius</div>
+                    </td>
                     <td>{{item.main.pressure}}</td>
                     <td>{{item.main.humidity}}</td>
                     <td>
@@ -40,6 +61,8 @@
                 </tr>
 
                 <tr *ngIf="!cityList ">
+                    <td>Loading...</td>
+                    <td>Loading...</td>
                     <td>Loading...</td>
                     <td>Loading...</td>
                     <td>Loading...</td>
