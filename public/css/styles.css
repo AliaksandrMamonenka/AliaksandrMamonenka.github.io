@@ -1,146 +1,87 @@
-/* Sticky footer styles
--------------------------------------------------- */
-html {
+html, body {
     position: relative;
+    height: 100%;
     min-height: 100%;
 }
 
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
+.app-weapther {
+    overflow: hidden;
+    min-width: 769px;
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 60px;
-    background-color: #f5f5f5;
+.app-weapther > .container {
+    padding: 79px 15px 0;
 }
 
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-
-.container {
-    width: auto;
-    max-width: 680px;
-    padding: 0 15px;
-}
-
-.container .text-muted {
-    margin: 20px 0;
-}
-
-.sebm-google-map-container {
-    height: 400px;
-    width: 100%;
-}
-
-.page-header {
+.app-weapther .navbar {
     margin: 0;
+}
+
+.app-weapther .navbar-fixed-top {
+    /*min-height: 70px;*/
+}
+
+.app-weapther .navbar-brand {
+    /*height: 69px;*/
+
+}
+
+.app-weapther .app-logo_text {
+    display: inline-block;
+    margin: 0 0 0 10px;
+}
+
+.app-weapther .app-logo {
+    margin-top: -6px;
     vertical-align: middle;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: url("../images/weather-icon.png") no-repeat;
+    background-size: cover;
 }
 
-.last-refresh {
-    margin: 0;
-    padding: 0;
-}
-
-.your-location {
-
-}
-
-.footer-paddings {
-    padding: 20px;
-    margin: 0;
-}
-
-/* Heart icon */
-
-.heart {
+.app-weapther .media {
+    min-height: 180px;
+    padding: 5px;
+    border: 2px solid #e7e7e7;
+    border-radius: 6px;
     position: relative;
-    width: 100px;
-    height: 90px;
+    overflow: visible;
+    margin-top: 28px;
 }
 
-.heart:before, .heart:after {
-    position: absolute;
-    content: "";
-    left: 20px;
-    top: -4px;
-    width: 20px;
-    height: 30px;
-    background: red;
-    -moz-border-radius: 50px 50px 0 0;
-    border-radius: 50px 50px 0 0;
-    -webkit-transform: rotate(-45deg);
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -o-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-    -webkit-transform-origin: 0 100%;
-    -moz-transform-origin: 0 100%;
-    -ms-transform-origin: 0 100%;
-    -o-transform-origin: 0 100%;
-    transform-origin: 0 100%;
+.app-weapther .media.heart {
+    border-color: #d9534f;
 }
 
-.heart:after {
-    left: 0;
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    transform: rotate(45deg);
-    -webkit-transform-origin: 100% 100%;
-    -moz-transform-origin: 100% 100%;
-    -ms-transform-origin: 100% 100%;
-    -o-transform-origin: 100% 100%;
-    transform-origin: 100% 100%;
+.app-weapther .list-group {
+    margin: 0;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-    position: relative;
-    min-height: 100%;
+.list-group-item {
+    padding: 5px 10px;
 }
 
-body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
+.app-weapther .media-wrapper {
+    margin-bottom: 30px;
+}
+
+.container .text-muted {
+    margin: 20px 0;
 }
 
 .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    /* Set the fixed height of the footer here */
     height: 60px;
     background-color: #f5f5f5;
-}
-
-/* Custom page CSS
--------------------------------------------------- */
-/* Not required for template or sticky footer method. */
-
-body > .container {
-    padding: 60px 15px 0;
-}
-
-.container .text-muted {
-    margin: 20px 0;
 }
 
 .footer > .container {
     padding-right: 15px;
     padding-left: 15px;
-}
-
-code {
-    font-size: 80%;
 }
 
 /*wind arrow*/
@@ -152,4 +93,62 @@ code {
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
     border-top: 18px solid #f00;
+}
+
+.app-circle {
+    width: 24px;
+    height: 24px;
+    padding: 5px 0;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.428571429;
+}
+
+.app-oval {
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1;
+    margin: 6px 0 0 0;
+}
+
+.media-btn-wrapper {
+    position: absolute;
+    top: -29px;
+    right: -2px;
+}
+
+.last-refresh {
+    position: fixed;
+    z-index: 10000;
+    right: 10px;
+    top: 25px;
+}
+
+.bubo-wrapper .bubo-title {
+    margin-top: 0;
+}
+
+.bubo-wrapper .bubo-icon {
+    margin-right: 10px;
+}
+
+.bubo-wrapper .bubo-temp {
+    margin: 20px 0 0 30px;
+    font-size: 30px;
+    padding: 0;
+    line-height: 1;
+}
+
+.well.well-sm {
+    min-height: 100px;
+}
+
+.sebm-google-map-container {
+    height: 400px;
+    width: 100%;
 }

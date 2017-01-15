@@ -1,28 +1,61 @@
-<!-- Main content -->
-<div class="container-fluid">
-    <header-component></header-component>
-    <div class="row">
-        <div class="col-lg-12">
-            <p class="your-location pull-left">
-                <b>Your coordinates are: </b>
-                <span *ngIf="!position">PENDING...</span>
-                <span *ngIf="position">Latitude {{position.coords.latitude | number:'1.3-3'}}, Longitude {{position.coords.longitude | number:'1.3-3'}}</span>
-            </p>
+<last-refresh [time]="time"></last-refresh>
 
-            <last-refresh [time]="time"></last-refresh>
+<header-component></header-component>
+
+<div style="height:100vh; padding: 50px 0 60px">
+    <div style="height:100%; overflow: auto; padding: 10px 0">
+        <error-handling *ngIf="errorMessage" [errorMessage]="errorMessage"></error-handling>
+        <div class="container" *ngIf="!errorMessage && position">
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <p>
+                        <b>Your coordinates are: </b> Latitude {{position.coords.latitude | number:'1.3-3'}},
+                        Longitude
+                        {{position.coords.longitude | number:'1.3-3'}}
+                    </p>
+                    <p>
+                        <button type="button"
+                                class="btn btn-outline btn-default"
+                                (click)="addNewCity()"> Add new city
+                        </button>
+                        <button type="button"
+                                class="btn btn-outline btn-default"
+                                (click)="checkCityWeather()">Check city weather
+                        </button>
+                        <button type="button"
+                                class="btn btn-outline btn-default"
+                                (click)="startProfiling()"> Start Profiling
+                        </button>
+                    </p>
+
+                    <h3>Weather list</h3>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <div class="well well-sm">
+                        <single-city *ngIf="isVisible"
+                                     [componentData]="componentTypeSettings"
+                                     (cityUpdated)="handleCityUpdated($event)"></single-city>
+                        <favorite-city *ngIf="isFavotiteVisible" [cityDetails]="favoriteCityDetails"></favorite-city>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <weather-component [position]="position"
+                                       [newCity]="newCity"
+                                       (favoriteCityUpdated)="handleFavoriteCityUpdated($event)">
+
+                    </weather-component>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <map-component [position]="position"></map-component>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="modules-wrapper" *ngIf="position">
-
-        <single-city></single-city>
-        <hr>
-        <weather-component [position]="position"></weather-component>
-        <!--<hr>-->
-        <!--TODO: Uncomment this file later-->
-        <!--<map-component [position]="position"></map-component>-->
-    </div>
 </div>
-<!-- ./END Main content -->
 
 <footer-component></footer-component>

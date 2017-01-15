@@ -1,6 +1,6 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({name: 'celsius'})
+@Pipe({name: 'waCelsius'})
 export class CelsiusPipe implements PipeTransform {
     transform(value: number, args: string[]): any {
         if (!value) return value;

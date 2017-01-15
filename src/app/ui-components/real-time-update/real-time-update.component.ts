@@ -1,14 +1,21 @@
-import {Component, ChangeDetectorRef, ChangeDetectionStrategy} from '@angular/core';
-
-import {FakeDataProvider} from './dataProvider';
+import { Component, ChangeDetectorRef, ChangeDetectionStrategy, Input } from '@angular/core';
 
 @Component({
     selector: 'real-time-update',
     changeDetection: ChangeDetectionStrategy.OnPush,
-    template: '<h5 class="pull-right" style="margin: 10px; padding: 10px; background-color: lavenderblush"><b>Real time update every 5 sec:</b> {{dataProvider.data}}</h5>'
+    template: `<div class="row" *ngIf="items">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="well well-sm">
+                            <button type="button" class="btn btn-info disabled" *ngFor="let item of items;">{{item}}</button>
+                        </div>
+                    </div>
+                </div>
+                `
 })
 export class RealTimeUpdateComponent {
-    constructor(private changeDetector: ChangeDetectorRef, private dataProvider: FakeDataProvider) {
+    @Input() items: string[];
+
+    constructor(private changeDetector: ChangeDetectorRef) {
 
         setInterval(() => {
             this.changeDetector.markForCheck();

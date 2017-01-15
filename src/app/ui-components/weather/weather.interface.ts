@@ -1,5 +1,5 @@
-import {List} from './list.interface';
+import { WeatherList } from './weather-list.interface';
 
 export interface WeatherData {
-    list: List[];
+    list: WeatherList[];
 }

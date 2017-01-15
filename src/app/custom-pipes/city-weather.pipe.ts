@@ -1,7 +1,7 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {config} from '../config/app.config';
+import { Pipe, PipeTransform } from '@angular/core';
+import { config } from '../config/app.config';
 @Pipe({
-    name: 'CityWeather'
+    name: 'waCityWeather'
 })
 export class CityWeatherPipe implements PipeTransform {
     usedCity: any[] = [];
@@ -13,7 +13,7 @@ export class CityWeatherPipe implements PipeTransform {
 
             // Check if City was fired before use this data
             for (let item of this.usedCity) {
-                if (item.name == name) {
+                if (item.name === name) {
                     return resolve(item);
                 }
             }
@@ -27,7 +27,7 @@ export class CityWeatherPipe implements PipeTransform {
                 .catch((ex: any) => {
                     console.warn(`Something went wrong: ${ex} !!!`);
                 });
-        })
+        });
     }
 
     transform(city: string) {

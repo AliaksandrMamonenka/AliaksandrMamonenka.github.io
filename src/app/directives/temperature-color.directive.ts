@@ -1,31 +1,32 @@
-import {Directive, ElementRef, Input, OnInit} from '@angular/core';
-import {ListOfColors} from './list_of_colors.interface'
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { ListOfColors } from './list_of_colors.interface';
 
 @Directive({
     selector: '[tempColor]'
 })
 export class TemperatureColorDirective implements OnInit {
-    @Input('tempColor') tempVal: string;
+    @Input('tempColor') tempColor: string;
     listOfColors: ListOfColors = {
-        hot: '#FF0000', // 30 +
-        very_warm: '#FF6600', //25 - 29
-        warm: '#FF9900', //18 - 24
-        moderate: '#FFCC00', //10 - 17
-        cool: '#FFFF99', //5 - 9
-        cold: '#2DD0CB',//-5 - 4
-        very_cold: '#2E65FD',//-15 - -6
-        freezing: '#3333FF'  //-14 <
+        hot: '#FF0000',
+        very_warm: '#FF6600',
+        warm: '#FF9900',
+        moderate: '#FFCC00',
+        cool: '#FFFF99',
+        cold: '#2DD0CB',
+        very_cold: '#2E65FD',
+        freezing: '#3333FF'
     };
 
     constructor(private el: ElementRef) {
     }
 
     ngOnInit(): void {
-        this.highlight(this.tempVal);
+        this.highlight(this.tempColor);
     }
 
     private highlight(temperature: any) {
-        //TODO: do this normally
+
+        // TODO: do this normally
         temperature = temperature - 273.15;
 
         let color: string;

@@ -1,15 +1,6 @@
-<div class="row">
-    <div class="col-lg-12">
-        <div class="row">
-            <h4 class="page-header">Single City Weather</h4>
-            <div class= "col-md-12 ">
-                <div class="well">
-                    <input [(ngModel)]="newVal" type="text" placeholder="Enter City Name here">
-                    <button (click)="checkWeather()">Check</button>
-                    <h4>Result</h4>
-                    <p>{{result | CityWeather | async | getData }} </p>
-                </div>
-            </div>
-        </div>
-    </div>
+<div class="bubo-wrapper">
+    <h3 class="bubo-title">{{componentData.name}}</h3>
+    <input [(ngModel)]="newCityName" type="text" placeholder="Enter City Name here">
+    <button class="btn btn-success btn-xs" (click)="addCityItem()">Add</button>
+    <p *ngIf="result && !componentData.isAddCity">{{result | waCityWeather | async | waGetData }} </p>
 </div>
