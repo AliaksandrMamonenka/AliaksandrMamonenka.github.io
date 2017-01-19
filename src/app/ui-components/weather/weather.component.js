@@ -10,8 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var app_config_1 = require('../../config/app.config');
+var city_weather_pipe_1 = require("../../custom-pipes/city-weather.pipe");
 var WeatherComponent = (function () {
-    function WeatherComponent() {
+    function WeatherComponent(cityWeather) {
+        this.cityWeather = cityWeather;
+        this.isVisible = false;
     }
     WeatherComponent.prototype.getWeatherDataFromServer = function (lat, lon, cnt) {
         var _this = this;
@@ -22,6 +25,30 @@ var WeatherComponent = (function () {
             .catch(function (ex) {
             console.warn("Something went wrong: " + ex + " !!!");
         });
+    };
+    WeatherComponent.prototype.makeFavorite = function (item) {
+        if (this.favoriteCityDetails) {
+            this.favoriteCityDetails.favorite = false;
+        }
+        item.favorite = !item.favorite;
+        this.favoriteCityDetails = item;
+    };
+    WeatherComponent.prototype.removeItem = function (itemIndex) {
+        this.cityList.splice(itemIndex, 1);
+    };
+    WeatherComponent.prototype.addNewCity = function () {
+        var _this = this;
+        this.cityWeather.transform(this.newCity).then(function (data) {
+            _this.cityList.unshift(data);
+            _this.isVisible = false;
+            _this.newCity = "";
+        });
+    };
+    WeatherComponent.prototype.addItem = function () {
+        this.isVisible = !this.isVisible;
+    };
+    WeatherComponent.prototype.canselAddItem = function () {
+        this.isVisible = false;
     };
     WeatherComponent.prototype.ngOnInit = function () {
         this.getWeatherDataFromServer(this.position.coords.latitude, this.position.coords.longitude, '50');
@@ -35,7 +62,7 @@ var WeatherComponent = (function () {
             selector: 'weather-component',
             templateUrl: './weather.component.html'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [city_weather_pipe_1.CityWeatherPipe])
     ], WeatherComponent);
     return WeatherComponent;
 }());

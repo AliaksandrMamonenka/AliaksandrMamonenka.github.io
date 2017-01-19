@@ -1,0 +1,7 @@
+<div class="bubo-wrapper">
+    <h3 class="bubo-title">Weather in {{cityDetails.name}} </h3>
+    <p class="pull-left bubo-icon">
+        <icon-weather [icon]="cityDetails.weather[0].icon"></icon-weather>
+    </p>
+    <p class="bubo-temp">{{cityDetails.main.temp | waCelsius}} &#8451;</p>
+</div>

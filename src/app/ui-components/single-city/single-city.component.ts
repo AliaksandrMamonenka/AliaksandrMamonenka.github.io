@@ -1,14 +1,22 @@
-import {Component} from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { ComponentType } from './../../component-type.interface';
 
 @Component({
     selector: 'single-city',
     templateUrl: './single-city.component.html',
 })
 export class SingleCityComponent {
-    newVal: string;
-    result: any;
+    @Input() componentData: ComponentType;
+    @Output() cityUpdated = new EventEmitter();
 
-    checkWeather() {
-        this.result = this.newVal;
+    newCityName: string;
+    result: any = null;
+
+    addCityItem() {
+        if (this.componentData.isAddCity) {
+            this.cityUpdated.emit(this.newCityName);
+        } else {
+            this.result = this.newCityName;
+        }
     }
 }

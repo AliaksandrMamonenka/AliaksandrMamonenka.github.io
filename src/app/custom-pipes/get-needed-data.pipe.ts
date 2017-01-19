@@ -1,10 +1,9 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({name: 'getData'})
+@Pipe({name: 'waGetData'})
 export class GetDataPipe implements PipeTransform {
     transform(value: any, args: string[]): any {
         if (!value) return value;
-        let result: string;
-        return `Requested city: ${value.name}, Temperature: ${value.main.temp} fahrenheit`;
+        return `Requested city: ${value.name}, Temperature: ${Math.round(value.main.temp - 273.15)} C`;
     }
 }

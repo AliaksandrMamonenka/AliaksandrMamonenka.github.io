@@ -1,33 +1,52 @@
+<script src="weather.component.ts"></script>
+
+<!-- the list of selected cities -->
+<real-time-update *ngIf="clickedItems && clickedItems.length > 0" [items]="clickedItems"></real-time-update>
 <div class="row">
-    <div class="col-lg-12">
-        <h2>Weather Table</h2>
-        <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Temp</th>
-                    <th>Pressure</th>
-                    <th>Humidity</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let item of cityList">
-                    <td>
-                        <button class="btn btn-link">{{item.name}}</button>
-                    </td>
-                    <td>{{item.main.temp | celsius}} celsius</td>
-                    <td>{{item.main.pressure}}</td>
-                    <td>{{item.main.humidity}}</td>
-                </tr>
-                <tr *ngIf="!cityList ">
-                    <td>Loading...</td>
-                    <td>Loading...</td>
-                    <td>Loading...</td>
-                    <td>Loading...</td>
-                </tr>
-                </tbody>
-            </table>
+    <spinner [active]="spinnerVisibility"></spinner>
+    <div class="col-xs-6 col-sm-6 col-md-4 media-wrapper" *ngFor="let item of cityList; let i = index">
+        <error-handling *ngIf="errorMessage" [errorMessage]="errorMessage"></error-handling>
+        <div class="media" [ngClass]="{'heart': item.favorite}">
+            <div class="media-left">
+                <icon-weather [icon]="item.weather[0].icon"></icon-weather>
+            </div>
+            <div class="media-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h4 class="media-heading" style="text-align: left;">
+                            <span>{{item.name}}</span>
+                            <span *structDir="i"> !!!</span>
+                        </h4>
+                        <h4 class="media-heading">
+                            <small>
+                                <span class="btn btn-default app-oval" [tempColor]="item.main.temp">{{item.main.temp | waCelsius}}&#8451;</span>
+                            </small>
+                        </h4>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="list-group">
+                            <p class="list-group-item">Wind: {{item.wind.speed}} meter/sec</p>
+                            <p class="list-group-item">Wind direction:
+                                <wind-data [direction]="item.wind.deg"></wind-data>
+                            </p>
+                            <p class="list-group-item">Pressure: {{item.main.pressure}} hPa</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="media-btn-wrapper">
+                <button type="button" class="btn btn-danger app-circle" (click)="makeFavorite(item)">
+                    <i class="fa fa-heart"></i>
+                </button>
+                <button type="button" class="btn btn-default app-circle" (click)="removeItem(i)">
+                    <i class="fa fa-times"></i>
+                </button>
+            </div>
         </div>
     </div>
 </div>
+
+
+
+

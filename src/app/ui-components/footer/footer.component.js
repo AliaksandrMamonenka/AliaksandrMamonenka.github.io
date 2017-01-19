@@ -16,7 +16,8 @@ var FooterComponent = (function () {
     FooterComponent = __decorate([
         core_1.Component({
             selector: 'footer-component',
-            templateUrl: './footer.component.html'
+            templateUrl: './footer.component.html',
+            changeDetection: core_1.ChangeDetectionStrategy.OnPush
         }), 
         __metadata('design:paramtypes', [])
     ], FooterComponent);

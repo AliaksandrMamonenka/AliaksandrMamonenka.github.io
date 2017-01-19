@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'footer-component',
-  templateUrl: './footer.component.html'
+  templateUrl: './footer.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-
 export class FooterComponent {
-  year:number = new Date().getTime();
+  year: number = new Date().getTime();
 }

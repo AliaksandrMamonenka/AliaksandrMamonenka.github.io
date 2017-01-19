@@ -1,11 +1,9 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
     selector: 'header-component',
     templateUrl: './header.component.html'
 })
-
 export class HeaderComponent {
-    weather = 'weather';
-    application = 'APPLICATION';
+    weather = 'AlexWeather';
 }
