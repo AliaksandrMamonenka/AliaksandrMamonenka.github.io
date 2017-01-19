@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { WeatherList } from '../weather/weather-list.interface'
+import { WeatherList } from '../weather/weather-list.interface';
 
 @Component({
     selector: 'favorite-city',
