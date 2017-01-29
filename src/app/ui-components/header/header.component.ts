@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
     templateUrl: './header.component.html'
 })
 export class HeaderComponent {
-    weather = 'AlexWeather';
+    weather = 'Weather';
 }
