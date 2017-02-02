@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter } from '@angular/core';
-import { ProfilingService } from './services/profiling.service';
 import { PositionService } from './services/position.service';
+import { ProfilingService } from './services/profiling.service';
 
 import { ComponentType } from './component-type.interface';
 import { WeatherList } from './ui-components/weather/weather-list.interface';
@@ -14,6 +14,7 @@ import '../../public/css/styles.css';
 export class AppComponent implements OnInit {
   time: EventEmitter<{}> = new EventEmitter(null);
 
+  hideBtn: boolean;
   errorMessage: string;
   newCity: string;
   checkCity: string;
@@ -22,7 +23,6 @@ export class AppComponent implements OnInit {
   position: any = null;
   componentTypeSettings: ComponentType;
   favoriteCityDetails: WeatherList;
-
 
   constructor(private profiling: ProfilingService, private userPosition: PositionService) {
 
@@ -61,6 +61,7 @@ export class AppComponent implements OnInit {
   }
 
   startProfiling() {
+    this.hideBtn = true;
     this.profiling.startProfiling();
   }
 

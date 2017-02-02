@@ -1,4 +1,4 @@
 export interface ComponentType {
-    name: string;
-    isAddCity: boolean;
+  name: string;
+  isAddCity: boolean;
 }

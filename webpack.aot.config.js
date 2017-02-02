@@ -1,15 +1,21 @@
 let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
-let helpers = require('./helpers');
+let helpers = require('./config/helpers');
 
 module.exports = {
     entry: {
         'polyfills': './src/polyfills.ts',
         'vendor': './src/vendor.ts',
-        'app': './src/main.ts'
+        'app': './src/main.aot.ts'
     },
 
+    output: {
+        path: helpers.root('aot-app'),
+        publicPath: '/',
+        filename: '[name].[hash].js',
+        chunkFilename: '[id].[hash].chunk.js'
+    },
     resolve: {
         extensions: ['', '.ts', '.js']
     },
@@ -45,9 +51,13 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: ['app', 'vendor', 'polyfills']
         }),
-
         new HtmlWebpackPlugin({
             template: 'src/index.html'
-        })
-    ]
+        }),
+        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new ExtractTextPlugin('[name].[hash].css')
+    ],
+    devtool: 'source-map'
 };
+

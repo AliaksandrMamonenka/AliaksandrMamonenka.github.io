@@ -1,9 +1,12 @@
 export interface WeatherList {
-    name: string;
-    favorite?: boolean;
-    main: {
-        temp: string;
-        pressure: string;
-        humidity: string;
-    };
+  name: string;
+  favorite?: boolean;
+
+  // fix for AOT :)
+  weather?: any;
+  main: {
+    temp: number;
+    pressure: string;
+    humidity: string;
+  };
 }

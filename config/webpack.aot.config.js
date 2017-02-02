@@ -1,3 +1,4 @@
+
 let webpack = require('webpack');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 let ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -7,9 +8,15 @@ module.exports = {
     entry: {
         'polyfills': './src/polyfills.ts',
         'vendor': './src/vendor.ts',
-        'app': './src/main.ts'
+        'app': './src/main.aot.ts'
     },
 
+    output: {
+        path: helpers.root('dist'),
+        publicPath: '/',
+        filename: '[name].[hash].js',
+        chunkFilename: '[id].[hash].chunk.js'
+    },
     resolve: {
         extensions: ['', '.ts', '.js']
     },
@@ -48,6 +55,21 @@ module.exports = {
 
         new HtmlWebpackPlugin({
             template: 'src/index.html'
+        }),
+        new webpack.NoErrorsPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.optimize.UglifyJsPlugin({ // https://github.com/angular/angular/issues/10618
+            mangle: {
+                keep_fnames: true
+            }
+        }),
+        new ExtractTextPlugin('[name].[hash].css'),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'ENV': JSON.stringify(ENV)
+            }
         })
-    ]
+    ],
+    devtool: 'source-map'
 };
+

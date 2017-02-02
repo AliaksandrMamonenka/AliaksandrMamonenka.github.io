@@ -24,6 +24,7 @@
                         </button>
                         <button type="button"
                                 class="btn btn-outline btn-default"
+                                *ngIf="!hideBtn"
                                 (click)="startProfiling()"> Start Profiling
                         </button>
                     </p>

@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "A webpack starter for angular 2",
   "scripts": {
+    "cleanup": "rimraf src/app/**/*.ngfactory.ts src/app/**/*.ngstyle.ts src/app/**/*.ngsummary.json build dist",
+    "ngc": "ngc",
     "start": "webpack-dev-server --inline --progress --port 8080",
     "test": "karma start",
     "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
+    "build-aot": "npm run cleanup && npm run ngc && webpack --config webpack.aot.config.js",
     "postinstall": "typings install",
     "lint": "tslint \"src/**/*.ts\""
   },
@@ -27,6 +30,8 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
+    "@angular/compiler-cli": "~2.2.0",
+    "@angular/platform-server": "~2.2.0",
     "@types/whatwg-fetch": "0.0.32",
     "angular2-template-loader": "^0.4.0",
     "awesome-typescript-loader": "^2.2.4",
