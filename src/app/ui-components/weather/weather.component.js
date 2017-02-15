@@ -33,7 +33,6 @@ var WeatherComponent = (function () {
     }
     WeatherComponent.prototype.handleformData = function (data) {
         this.filterData = data;
-        debugger;
     };
     WeatherComponent.prototype.makeFavorite = function (item) {
         if (this.favoriteCityDetails) {

@@ -40,7 +40,6 @@ export class WeatherComponent implements OnInit, OnChanges {
 
   handleformData(data: any) {
     this.filterData = data;
-    debugger;
   }
 
   makeFavorite(item: WeatherList): void {
