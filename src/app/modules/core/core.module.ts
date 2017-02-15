@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule }  from '@angular/platform-browser';
-import { FormsModule }   from '@angular/forms';
-import { SharedModule }   from '../shared/shared.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { SharedModule } from '../shared/shared.module';
 
 // UI components
 import { HeaderComponent } from '../../ui-components/header/header.component';
@@ -17,7 +16,6 @@ import { GetDataPipe } from '../../custom-pipes/get-needed-data.pipe';
 @NgModule({
   imports: [
     BrowserModule,
-    FormsModule,
     SharedModule
   ],
   declarations: [
@@ -32,7 +30,6 @@ import { GetDataPipe } from '../../custom-pipes/get-needed-data.pipe';
   providers: [CityWeatherPipe],
   exports: [
     BrowserModule,
-    FormsModule,
     SharedModule,
     HeaderComponent,
     FooterComponent,

@@ -152,3 +152,36 @@ html, body {
     height: 400px;
     width: 100%;
 }
+
+.panel-my-size {
+    width: 250px;
+    position: absolute;
+    top: 40px;
+    left: 15px;
+    max-height: 0;
+    transition: max-height 0.15s ease-out, opacity 0.3s ease-out;
+    overflow: hidden;
+    box-shadow: none;
+    opacity: 0;
+    z-index: 50;
+}
+
+.panel-my-size.toggled {
+    max-height: 550px;
+    opacity: 1;
+    transition: max-height 0.25s ease-in, opacity 0.3s ease-out;
+}
+
+.weather-filter-wrapper {
+    display: inline-block;
+    position: relative;
+}
+
+input[type="radio"]:checked + label .btn-default {
+    font-weight: bold;
+    background-color: #bfbebe;
+}
+
+.label-babel {
+    margin-right: 10px;
+}

@@ -1,0 +1,50 @@
+<div class="weather-filter-wrapper col-xs-12 col-sm-12 col-md-12">
+    <button type="reset" class="btn btn-default" (click)="toggleItem();">Open weather filter</button>
+
+    <div class="panel panel-default panel-my-size" [ngClass]="{'toggled': toggleBtn}">
+        <div class="panel-heading">
+            Weather filter
+        </div>
+        <div class="panel-body">
+            <form [formGroup]="formGroup" (submit)="submitForm(formGroup)">
+
+                <label>Choose temperature type</label><br />
+                <temperature-type formControlName="tempType"></temperature-type>
+
+                <div class="form-group">
+                    <label>Set city counts</label>
+                    <select class="form-control" formControlName="cityCounts">
+                        <option *ngFor="let count of cityCountsSelect" [ngValue]="count.value">{{count.name}}</option>
+                    </select>
+                    <weather-filter-error-handling [errorObject]="formGroup.controls.cityCounts" [errorMsg]="'Choose something'"></weather-filter-error-handling>
+                </div>
+                <div class="form-group">
+                    <fieldset formGroupName="visibleElements">
+                        <label>Select the needed field</label>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" formControlName="speed">Wind speed
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" formControlName="direction">Wind direction
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" formControlName="pressure">Pressure
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="form-group">
+                    <label>Captcha</label>
+                    <input class="form-control" placeholder="Enter 'Alex1' please" formControlName="captcha">
+                    <weather-filter-error-handling [errorObject]="formGroup.controls.captcha" [errorMsg]="'Enter \'Alex1\' '"></weather-filter-error-handling>
+                </div>
+                <button type="submit" class="btn btn-default pull-right" [disabled]="formGroup.invalid">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

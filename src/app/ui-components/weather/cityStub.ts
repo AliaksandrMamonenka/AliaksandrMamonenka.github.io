@@ -1,5 +1,4 @@
-"use strict";
-function stubFunc() {
+export function stubFunc (){
     return [
         {
             "id": 629553,
@@ -361,7 +360,6 @@ function stubFunc() {
                 }
             ]
         }
-    ];
+    ]
+      ;
 }
-exports.stubFunc = stubFunc;
-//# sourceMappingURL=cityStub.js.map

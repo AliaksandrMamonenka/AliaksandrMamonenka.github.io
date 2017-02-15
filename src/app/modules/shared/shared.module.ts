@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IconWeatherComponent } from '../../ui-components/icon-weather/icon-weather.component';
 import { WindDataComponent } from '../../ui-components/wind-data/wind-data.component';
@@ -9,7 +10,9 @@ import { CelsiusPipe } from '../../custom-pipes/celsius.pipe';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     IconWeatherComponent,
@@ -19,6 +22,8 @@ import { CelsiusPipe } from '../../custom-pipes/celsius.pipe';
   ],
   exports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     IconWeatherComponent,
     CelsiusPipe,
     WindDataComponent,

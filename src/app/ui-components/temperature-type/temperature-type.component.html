@@ -1,0 +1,13 @@
+<div style="display: inline-block" *ngFor="let item of items">
+    <input id="rad{{item}}"
+           type="radio"
+           (change)="setValue($event)"
+           [value]="item"
+           [checked]="value === item"
+           name="tempType"
+           style="display: none">
+    <label class="label-babel" for="rad{{item}}">
+        <span class="btn btn-default btn-xs" *ngIf="item === '1'">&#8451;</span>
+        <span class="btn btn-default btn-xs" *ngIf="item === '2'">&#8457;</span>
+    </label>
+</div>

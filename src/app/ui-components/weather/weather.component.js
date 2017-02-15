@@ -11,16 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var city_weather_pipe_1 = require("../../custom-pipes/city-weather.pipe");
 var weather_service_1 = require("../../services/weather.service");
+var cityStub_1 = require("./cityStub");
 var WeatherComponent = (function () {
     function WeatherComponent(cityWeather, weather) {
         this.cityWeather = cityWeather;
         this.weather = weather;
         this.favoriteCityUpdated = new core_1.EventEmitter();
-        // cityList: any;
         this.spinnerVisibility = true;
         this.clickedItems = [];
         this.isVisible = false;
+        this.filterData = {
+            captcha: "Alex1",
+            cityCounts: 50,
+            tempType: "1",
+            visibleElements: {
+                direction: true,
+                pressure: true,
+                speed: true
+            }
+        };
     }
+    WeatherComponent.prototype.handleformData = function (data) {
+        this.filterData = data;
+        debugger;
+    };
     WeatherComponent.prototype.makeFavorite = function (item) {
         if (this.favoriteCityDetails) {
             this.favoriteCityDetails.favorite = false;
@@ -44,13 +58,13 @@ var WeatherComponent = (function () {
         }
     };
     WeatherComponent.prototype.getWeatherForCities = function () {
-        var _this = this;
-        this.weather.getWeatherDataFromServer(this.position.coords.latitude, this.position.coords.longitude, '10').then(function (data) {
-            _this.spinnerVisibility = false;
-            _this.cityList = data.list;
-        }, function (error) {
-            _this.errorMessage = "We have some problem with Weather server! " + error;
-        });
+        this.cityList = cityStub_1.stubFunc();
+        // this.weather.getWeatherDataFromServer(this.position.coords.latitude, this.position.coords.longitude, '10').then((data: any) => {
+        //   this.spinnerVisibility = false;
+        //   this.cityList = data.list;
+        // }, (error: any) => {
+        //   this.errorMessage = `We have some problem with Weather server! ${error}`;
+        // });
     };
     WeatherComponent.prototype.ngOnInit = function () {
         this.getWeatherForCities();
