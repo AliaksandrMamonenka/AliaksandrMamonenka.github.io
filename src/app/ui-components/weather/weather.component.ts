@@ -35,7 +35,7 @@ export class WeatherComponent implements OnInit, OnChanges {
         pressure: true,
         speed: true
       }
-    }
+    };
   }
 
   handleformData(data: any) {

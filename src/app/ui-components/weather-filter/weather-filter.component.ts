@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CityCountsSelect } from './cityCountsSelect.interface'
+import { CityCountsSelect } from './cityCountsSelect.interface';
 import { validateCaptcha } from '../../custom-validator/captcha.validator';
 
 @Component({

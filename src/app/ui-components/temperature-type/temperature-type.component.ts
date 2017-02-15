@@ -31,10 +31,8 @@ export class TemperatureTypeComponent implements ControlValueAccessor {
     return this.currentValue;
   }
 
-  onChange = (_: string) => {
-  };
-  onTouched = () => {
-  };
+  onChange = (_: string) => {};
+  onTouched = () => {};
 
   registerOnChange(fn: any) {
     this.onChange = fn;

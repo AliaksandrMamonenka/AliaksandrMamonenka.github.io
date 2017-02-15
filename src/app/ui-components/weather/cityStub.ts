@@ -1,4 +1,4 @@
-export function stubFunc (){
+export function stubFunc () {
     return [
         {
             "id": 629553,
