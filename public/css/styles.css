@@ -122,13 +122,6 @@ html, body {
     right: -2px;
 }
 
-.last-refresh {
-    position: fixed;
-    z-index: 10000;
-    right: 10px;
-    top: 25px;
-}
-
 .bubo-wrapper .bubo-title {
     margin-top: 0;
 }
@@ -139,7 +132,7 @@ html, body {
 
 .bubo-wrapper .bubo-temp {
     margin: 20px 0 0 30px;
-    font-size: 30px;
+    font-size: 16px;
     padding: 0;
     line-height: 1;
 }
@@ -184,4 +177,8 @@ input[type="radio"]:checked + label .btn-default {
 
 .label-babel {
     margin-right: 10px;
+}
+
+.nav .active {
+    font-weight: bold;
 }

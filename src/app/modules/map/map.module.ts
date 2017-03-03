@@ -5,23 +5,24 @@ import { SharedModule } from '../shared/shared.module';
 import { config } from '../../config/app.config';
 
 // Components
-import { MapComponent } from '../../ui-components/map/map.component';
+// import { MapComponent } from '../../ui-components/map/map.component';
 
-// Google map
-import { AgmCoreModule } from 'angular2-google-maps/core';
+// // Google map
+// import { AgmCoreModule } from 'angular2-google-maps/core';
 
 @NgModule({
   imports: [
     SharedModule,
-    AgmCoreModule.forRoot({
-      apiKey: config.mapId
-    })],
+    // AgmCoreModule.forRoot({
+    //   apiKey: config.mapId
+    // })
+  ],
   declarations: [
-    MapComponent
+    // MapComponent
   ],
   providers: [],
   exports: [
-    MapComponent
+    // MapComponent
   ]
 })
 export class MapModule {

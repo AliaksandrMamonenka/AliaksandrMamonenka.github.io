@@ -6,6 +6,7 @@ import { ListOfColors } from './list_of_colors.interface';
 })
 export class TemperatureColorDirective implements OnInit {
   @Input('tempColor') tempColor: string;
+  TEMP_CONST: number = 273.15;
   listOfColors: ListOfColors = {
     hot: '#FF0000',
     very_warm: '#FF6600',
@@ -25,9 +26,7 @@ export class TemperatureColorDirective implements OnInit {
   }
 
   private highlight(temperature: any) {
-
-    // TODO: do this normally
-    temperature = temperature - 273.15;
+    temperature = temperature - this.TEMP_CONST;
 
     let color: string;
 

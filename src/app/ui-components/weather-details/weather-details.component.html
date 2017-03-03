@@ -1,0 +1,6 @@
+<div class="bubo-wrapper well well-sm" *ngIf="cityDetails">
+    <h3 class="bubo-title">Weather in {{cityDetails.name}} </h3>
+    <span class="bubo-temp">{{cityDetails.main.temp | waCelsius}} &#8451;</span>
+    <span class="bubo-temp">{{cityDetails.main.pressure}}</span>
+    <span class="bubo-temp">{{cityDetails.main.humidity}}</span>
+</div>

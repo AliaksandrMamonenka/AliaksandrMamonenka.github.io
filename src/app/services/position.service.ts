@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
-export class PositionService {
-  getCurrentUserPosition() {
-    return new Promise(function (onSuccess, onError) {
+export default class PositionService {
+    getCurrentUserPosition(): Observable<any> {
+    const promise = new Promise(function (onSuccess, onError) {
       navigator.geolocation.getCurrentPosition(
         (position: Position) => {
           onSuccess(position);
@@ -11,5 +12,7 @@ export class PositionService {
           onError(error);
         });
     });
+
+    return Observable.fromPromise(promise);
   }
 }

@@ -1,9 +1,27 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"><span class="app-logo"></span>
+            <a class="navbar-brand" [routerLink]=" [''] "
+               routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <span class="app-logo"></span>
                 <h3 class="app-logo_text">{{weather}}</h3>
             </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a [routerLink]=" ['./weather'] "
+                       routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                       Weather
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]=" ['./map'] "
+                       routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                        Map
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
