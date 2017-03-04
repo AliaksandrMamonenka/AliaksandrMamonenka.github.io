@@ -4,21 +4,10 @@
 </div>
 <div class="col-xs-12 col-sm-12 col-md-12">
     <div class="row">
-        <weather-filter (formData)="handleformData($event)"></weather-filter>
-        <button type="button"
-                class="btn btn-outline btn-default"
-                (click)="addNewCity()"> Add new city
-        </button>
-        <button type="button"
-                class="btn btn-outline btn-default"
-                (click)="checkCityWeather()">Check city weather
-        </button>
+        <weather-filter></weather-filter>
     </div>
-
     <router-outlet></router-outlet>
-
-    <!--<spinner [active]="!cityList && !filterData"></spinner>-->
-
+    <spinner [active]="!cityList && !filterData"></spinner>
     <div *ngIf="cityList">
         <weather-component [cityList]="cityList" [filterData]="filterData"></weather-component>
     </div>

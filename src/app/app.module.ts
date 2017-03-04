@@ -3,7 +3,7 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './modules/core/core.module';
 import { MapModule } from './modules/map/map.module';
 import { WeatherModule } from './modules/weather/weather.module';
-import PositionService from './services/position.service'
+import PositionService from './services/position.service';
 
 
 @NgModule({

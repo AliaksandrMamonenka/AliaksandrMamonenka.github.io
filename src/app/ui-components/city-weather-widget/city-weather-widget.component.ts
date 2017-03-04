@@ -12,7 +12,7 @@ import { WeatherService } from "../../services/weather.service";
 })
 export class CityWeatherWidgetComponent implements OnInit {
   position: Position = null;
-  cityDetails:any = null;
+  cityDetails: any = null;
 
 
   constructor(private store: Store<InitialState>, private getWeatherForUserCity: WeatherService) {

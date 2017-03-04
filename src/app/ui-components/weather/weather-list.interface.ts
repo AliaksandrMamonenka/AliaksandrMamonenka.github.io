@@ -1,5 +1,5 @@
 export interface WeatherList {
-  id?:number;
+  id?: number;
   name: string;
   favorite?: boolean;
 

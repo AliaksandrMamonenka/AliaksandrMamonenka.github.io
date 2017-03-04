@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import * as WeatherDetailsActions from '../actions/weather-details.actions';
-import { WeatherService } from '../services/weather.service'
+import { WeatherService } from '../services/weather.service';
 
 @Injectable()
 export class WeatherDetailsEffects {

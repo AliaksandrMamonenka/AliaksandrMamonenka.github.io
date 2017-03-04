@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import * as GeolocationActions from '../actions/geolocation.actions';
-import PositionService from '../services/position.service'
+import PositionService from '../services/position.service';
 
 @Injectable()
 export class GeolocationEffects {

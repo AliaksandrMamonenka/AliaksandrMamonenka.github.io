@@ -1,4 +1,4 @@
-import {FilterData} from './filter-data.interface'
+import { FilterData } from './filter-data.interface';
 
 export const initialFilterDataState: FilterData = {
   captcha: "Alex1",

@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 // ngrx
 import { Store } from '@ngrx/store';
 import * as GeolocationActions from './actions/geolocation.actions';
-import * as FilterDataActions from './actions/filter-data.actions';
 import { InitialState } from './states';
 
 // app styles
@@ -25,15 +24,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(new GeolocationActions.GetGeolocationActions(1));
-    this.store.dispatch(new FilterDataActions.GetFilterDataActions(1));
   }
 
   openWidget() {
     this.toggleWidget = !this.toggleWidget;
-    if(this.toggleWidget){
+    if (this.toggleWidget) {
       this.router.navigate([{outlets: {city: null}}]);
       this.togleBtnWidgetName = 'Open';
-    }else{
+    } else {
       this.togleBtnWidgetName = 'Close';
       this.router.navigate([{outlets: {city: 'widget'}}]);
     }

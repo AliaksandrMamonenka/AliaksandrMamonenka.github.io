@@ -4,7 +4,7 @@
 <div class="col-xs-12 col-sm-12 col-md-12">
     <h2>Google Map</h2>
 
-    <!--<spinner [active]="!position.coords"></spinner>-->
+    <spinner [active]="!position.coords"></spinner>
 
     <div *ngIf="position.coords">
         <coord-info [position]="position"></coord-info>

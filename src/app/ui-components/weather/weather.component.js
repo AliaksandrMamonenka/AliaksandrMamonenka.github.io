@@ -10,18 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-// ngrx
-var store_1 = require('@ngrx/store');
 var WeatherComponent = (function () {
-    function WeatherComponent(store, router) {
-        this.store = store;
+    function WeatherComponent(router) {
         this.router = router;
     }
     WeatherComponent.prototype.getWeatherDetails = function (item) {
         if (this.favoriteCityDetails) {
             this.favoriteCityDetails.favorite = false;
         }
-        // this.store.dispatch(new WeatherDetailsActions.GetWeatherDetailsActions(item.id));
         item.favorite = !item.favorite;
         this.router.navigate(['./weather/weather-details', item.id]);
         this.favoriteCityDetails = item;
@@ -42,7 +38,7 @@ var WeatherComponent = (function () {
             selector: 'weather-component',
             templateUrl: './weather.component.html'
         }), 
-        __metadata('design:paramtypes', [store_1.Store, router_1.Router])
+        __metadata('design:paramtypes', [router_1.Router])
     ], WeatherComponent);
     return WeatherComponent;
 }());

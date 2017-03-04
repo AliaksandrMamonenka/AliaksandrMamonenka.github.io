@@ -2,6 +2,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CityCountsSelect } from './cityCountsSelect.interface';
 import { validateCaptcha } from '../../custom-validator/captcha.validator';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/Rx';
+import { InitialState } from '../../states';
+import * as FilterDataActions from '../../actions/filter-data.actions';
 
 @Component({
   selector: 'weather-filter',
@@ -13,7 +17,7 @@ export class WeatherFilterComponent implements OnInit {
   formGroup: FormGroup;
   cityCountsSelect: CityCountsSelect[];
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private store: Store<InitialState>) {
     this.cityCountsSelect = [
       {name: null, value: null},
       {name: '10 items', value: 10},
@@ -29,8 +33,7 @@ export class WeatherFilterComponent implements OnInit {
   }
 
   submitForm(form: FormGroup) {
-    console.log(form.value);
-    this.formData.emit(form.value);
+    this.store.dispatch(new FilterDataActions.SetFilterDataActions(form.value));
     this.toggleBtn = !this.toggleBtn;
     form.reset();
   }

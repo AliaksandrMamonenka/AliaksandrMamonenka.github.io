@@ -11,13 +11,13 @@ export default function (state = initialFilterDataState, action: FilterDataActio
         captcha: action.payload.captcha,
         cityCounts: action.payload.cityCounts,
         tempType: action.payload.tempType,
-        visibleElements:{
+        visibleElements: {
           direction: action.payload.visibleElements.direction,
           pressure: action.payload.visibleElements.pressure,
           speed: action.payload.visibleElements.speed
         }
       };
-// ;
+
       return Object.assign({}, state, newData);
     }
 
