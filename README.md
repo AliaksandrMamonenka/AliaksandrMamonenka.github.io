@@ -1,2 +1,2 @@
 # AliaksandrMamonenka.github.io
-Weather Application 
+Weather Application (Angular 2+)
